@@ -44,6 +44,22 @@
 
             <hr />
 
+            <!--/* Search fields */-->
+            <div class="row text-left">
+                <div class="col-1">
+                    &nbsp;
+                </div>
+                <div class="col-3">
+                    <input id="searchByFirstName" class="form-control" type="text" placeholder="First name">
+                </div>
+                <div class="col-3">
+                    &nbsp;
+                </div>
+                <div class="col-3">
+                    &nbsp;
+                </div>
+            </div>
+
             <!--/* 'Table' header */-->
             <div class="row text-left">
                 <div class="col-1">
@@ -80,7 +96,14 @@
                 </div>
             </div>
 
+            <!--/* 'Dynamic' search using JavaScript and REST controller */-->
+            <div id="searchResult">
+
+            </div>
+
         </div>
+
+        <script src="/js/customers.js"></script>
 
     </body>
 </html>

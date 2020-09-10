@@ -81,7 +81,13 @@ public class CustomerService {
         return customerDAO.update(customer);
     }
 
-
+    /**
+     * Deletes a customer.
+     *
+     * @param customer The customer to be deleted.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void deleteCustomer(Customer customer) throws SQLException, ClassNotFoundException {
 
         log.info("---------------------------------------------------------------------------------------------------");
@@ -102,5 +108,13 @@ public class CustomerService {
         log.info("CustomerService::getCustomers()");
 
         return customerDAO.findAll();
+    }
+
+    public List<Customer> findByFirstNameStartingWith(String firstName) throws ClassNotFoundException, SQLException {
+
+        log.info("---------------------------------------------------------------------------------------------------");
+        log.info("CustomerService::findByFirstNameStartingWith()");
+
+        return customerDAO.findByFirstNameStartingWith(firstName);
     }
 }

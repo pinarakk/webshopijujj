@@ -239,4 +239,42 @@ public class CustomerDAO {
 
         return customers;
     }
+
+    public List<Customer> findByFirstNameStartingWith(String firstname) throws ClassNotFoundException, SQLException {
+
+        log.info("---------------------------------------------------------------------------------------------------");
+        log.info("CustomerDAO::findByFirstNameStartingWith()");
+
+        Class.forName(JDBC_DRIVER);
+
+        Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+
+        String query = "SELECT * FROM customer WHERE (LOWER(firstname) LIKE "
+                + "'%"
+                + firstname
+                + "%')";
+
+        log.info("Query: " + query);
+
+        List<Customer> customers = new ArrayList<>();
+
+        Statement statement = connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        while(resultSet.next()) {
+
+            Long id             = resultSet.getLong("id");
+            String firstName    = resultSet.getString("firstname");
+            String lastName     = resultSet.getString("lastname");
+            String email        = resultSet.getString("email");
+
+            Customer customer = new Customer(id, firstName, lastName, email);
+            customers.add(customer);
+        }
+
+        connection.close();
+
+        return customers;
+    }
 }
