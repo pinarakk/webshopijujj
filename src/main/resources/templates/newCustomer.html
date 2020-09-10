@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>New customer</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+
+        <div class="container text-center">
+
+            <hr />
+            <!--/* Title / Header */-->
+            <div class="row">
+                <div class="col-2">
+                    <img src="/images/bfhLogo.png" th:src="@{/images/bfhLogo.png}" th:width="${uiHelper.getImageWidth('bfhLogo.png')}" th:height="${uiHelper.getImageHeight('bfhLogo.png')}" alt="" />
+                </div>
+                <div class="col-8">
+                    <h1>Webshop</h1>
+                </div>
+            </div>
+
+            <hr />
+            <!--/* Navigation */-->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a th:href="@{/}" class="btn btn-primary btn-sm buttonWidthMenu">Index</a>
+                    <a th:href="@{/customers}" class="btn btn-primary btn-sm buttonWidthMenu">Customers</a>
+                    <a th:href="@{/newCustomer}" class="btn btn-primary btn-sm buttonWidthMenu">New customer</a>
+                </div>
+            </div>
+
+            <hr />
+            <!--/* Subtitle */-->
+            <h2>New customer</h2>
+
+            <hr />
+            <!--/* Form */-->
+            <form th:object="${customer}" th:action="@{/createCustomer}" method="post">
+
+                <div class="row text-left">
+                    <div class="col-6 mb-2">
+                        <input type="text" class="form-control" th:field="*{firstName}" placeholder="First name">
+                    </div>
+                </div>
+
+                <div class="row text-left">
+                    <div class="col-6 mb-2">
+                        <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="row text-left">
+                    <div class="col-6 mb-2">
+                        <input type="text" class="form-control" th:field="*{email}" placeholder="Email">
+                    </div>
+                </div>
+
+                <hr />
+
+                <button type="submit" class="btn btn-primary btn-sm">Create</button>
+
+            </form>
+
+        </div>
+
+    </body>
+</html>
