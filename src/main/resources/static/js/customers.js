@@ -4,15 +4,18 @@ $(function() {
 
     const $searchResult = $('#searchResult');
 
+    // Method called on every change in search field, even paste!
     $searchByFirstName.on('input', function() {
 
+        // Get search term from input field (and remove eventually leading and/or trailing whitespace)
         const searchTerm = $searchByFirstName.val().trim();
 
+        // Empty dynamic search results div
         $searchResult.empty();
-        $('#records').show();
 
         if (searchTerm !== '') {
 
+            // Hide 'all' customers ...
             $('#records').hide();
 
             // Call REST method (web service method) on server  ...
@@ -21,6 +24,7 @@ $(function() {
                 .then(
                     function(response) {
 
+                        // TODO: Needs to be changed! Don't hide problems! Update DOM (HTML) with error!
                         if (response.status !== 200) {
                             console.log('Looks like there was a problem. Status Code: ' + response.status);
                             return;
@@ -52,8 +56,15 @@ $(function() {
                     }
                 )
                 .catch(function(err) {
+
+                    // TODO: Needs to be changed! Don't hide problems! Update DOM (HTML) with error!
                     console.log('Fetch Error :-S', err);
                 });
+        }
+        else {
+
+            // Show all customers (rendered from server / Thymeleaf) ...
+            $('#records').show();
         }
     });
 });
