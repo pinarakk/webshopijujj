@@ -77,24 +77,27 @@
             </div>
 
             <!--/* 'Table' records */-->
-            <div th:each="customer : ${customers}" class="row mb-1 text-left">
-                <div class="col-1">
-                    <span th:text="${customer.getId()}"></span>
-                </div>
-                <div class="col-3">
-                    <span th:text="${customer.getFirstName()}"></span>
-                </div>
-                <div class="col-3">
-                    <span th:text="${customer.getLastName()}"></span>
-                </div>
-                <div class="col-3">
-                    <span th:text="${customer.getEmail()}"></span>
-                </div>
-                <div class="col-2 text-right">
-                    <a th:href="'/editCustomer/' + ${customer.getId()}" class="btn btn-outline-primary btn-sm buttonWidthSquare" role="button"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    <a th:href="'/deleteCustomer/' + ${customer.getId()}" class="btn btn-outline-primary btn-sm buttonWidthSquare" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <div id="records">
+                <div th:each="customer : ${customers}" class="row mb-1 text-left">
+                    <div class="col-1">
+                        <span th:text="${customer.getId()}"></span>
+                    </div>
+                    <div class="col-3">
+                        <span th:text="${customer.getFirstName()}"></span>
+                    </div>
+                    <div class="col-3">
+                        <span th:text="${customer.getLastName()}"></span>
+                    </div>
+                    <div class="col-3">
+                        <span th:text="${customer.getEmail()}"></span>
+                    </div>
+                    <div class="col-2 text-right">
+                        <a th:href="'/editCustomer/' + ${customer.getId()}" class="btn btn-outline-primary btn-sm buttonWidthSquare" role="button"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a th:href="'/deleteCustomer/' + ${customer.getId()}" class="btn btn-outline-primary btn-sm buttonWidthSquare" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
+
 
             <!--/* 'Dynamic' search using JavaScript and REST controller */-->
             <div id="searchResult">

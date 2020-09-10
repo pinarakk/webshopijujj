@@ -26,7 +26,7 @@ public class CustomerRESTController {
     private final CustomerService customerService;
 
     /**
-     * COnstructor.
+     * Constructor.
      *
      * @param customerService The customer service to be injected.
      */
